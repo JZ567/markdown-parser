@@ -11,13 +11,52 @@ public class MarkdownParse {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then read link upto next )
         int currentIndex = 0;
-        while(currentIndex < markdown.length()) {
+
+        int numberCloseParen = 0;
+        int numberOpenParen = 0;
+        
+        // figure out number of ")" in markdown
+        for (int i = 0; i < markdown.length(); i++){
+            if (markdown.charAt(i) == ')'){
+                numberCloseParen++;
+            }
+        }
+
+        for (int i = 0; i < markdown.length(); i++){
+            if (markdown.charAt(i) == '('){
+                numberOpenParen++;
+            }
+        }
+            while(currentIndex < markdown.length()) {
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
-            int openParen = markdown.indexOf("(", closeBracket);
-            int closeParen = markdown.indexOf(")", openParen);
+            int openParen = markdown.indexOf("(", closeBracket);   
+            int closeParen = 0;
+            if (numberOpenParen == numberCloseParen){
+                closeParen = markdown.indexOf(")", openParen);
+                currentIndex = closeParen + 1;
+            }
+            else{
+                int closeParenIndex = 0;
+                int nextOpenBracket =  markdown.indexOf("[", openBracket + 1);
+
+                if (nextOpenBracket == -1){
+                    nextOpenBracket = markdown.length();
+                }
+
+                for (int j = 0; j < nextOpenBracket; j++){
+                    if (markdown.charAt(j) == ')'){
+                        closeParenIndex = j;
+                        
+                    }
+                }
+                closeParen = closeParenIndex;
+                currentIndex = closeParen + 1;
+            }
+
             toReturn.add(markdown.substring(openParen + 1, closeParen));
-            currentIndex = closeParen + 1;
+        
+            //System.out.println(currentIndex);
         }
 
         return toReturn;
