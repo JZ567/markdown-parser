@@ -14,7 +14,7 @@ public class MarkdownParse {
 
         int numberCloseParen = 0;
         int numberOpenParen = 0;
-        
+
         // figure out number of ")" in markdown
         for (int i = 0; i < markdown.length(); i++){
             if (markdown.charAt(i) == ')'){
@@ -32,7 +32,7 @@ public class MarkdownParse {
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);   
             int closeParen = 0;
-            if (numberOpenParen == numberCloseParen){
+            if (numberOpenParen >= numberCloseParen){
                 closeParen = markdown.indexOf(")", openParen);
                 currentIndex = closeParen + 1;
             }
