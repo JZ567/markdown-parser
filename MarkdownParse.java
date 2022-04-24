@@ -15,6 +15,7 @@ public class MarkdownParse {
         int numberCloseParen = 0;
         int numberOpenParen = 0;
         boolean extraLinesAfterLink = false;
+        boolean noParenthesis = false;
 
         // figure out number of ")" in markdown
         for (int i = 0; i < markdown.length(); i++){
@@ -36,7 +37,11 @@ public class MarkdownParse {
                 extraLinesAfterLink = true;
             }
             int closeBracket = markdown.indexOf("]", openBracket);
-            int openParen = markdown.indexOf("(", closeBracket);   
+            int openParen = markdown.indexOf("(", closeBracket);
+            // fixes test-file3
+            if (openParen == -1){
+                noParenthesis = true;
+            }   
             int closeParen = 0;
 
             if (numberOpenParen >= numberCloseParen){
@@ -64,6 +69,11 @@ public class MarkdownParse {
             //fixes test-file2
             if (extraLinesAfterLink){
                 currentIndex = markdown.length();
+            }
+
+            //fixes test-file3
+            if (noParenthesis){
+                return toReturn;
             }
 
             toReturn.add(markdown.substring(openParen + 1, closeParen));
