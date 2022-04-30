@@ -26,4 +26,10 @@ public class MarkdownParseTest {
         
         //(List.of("https://something.com", "some-thing.html"), MarkdownParse.getLinks(Files.readString(Path.of("test-file.md"))));
     }
+
+    @Test
+    public void failTest() {
+        assertEquals(2, 1+2);
+
+    }
 }
