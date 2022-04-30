@@ -37,6 +37,9 @@ public class MarkdownParse {
                 extraLinesAfterLink = true;
             }
             int closeBracket = markdown.indexOf("]", openBracket);
+            if(closeBracket == -1){
+                break;
+            }
             int openParen = markdown.indexOf("(", closeBracket);
             // fixes test-file3
             if (openParen == -1){
