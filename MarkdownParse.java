@@ -11,7 +11,6 @@ public class MarkdownParse {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then read link upto next )
         int currentIndex = 0;
-
         int numberCloseParen = 0;
         int numberOpenParen = 0;
         boolean extraLinesAfterLink = false;

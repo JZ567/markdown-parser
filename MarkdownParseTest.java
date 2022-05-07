@@ -14,6 +14,11 @@ public class MarkdownParseTest {
 
     }
 
+    public void addition2() {
+        assertEquals(2, 1 + 1);
+
+    }
+
     @Test
     public void test() throws IOException{
         assertEquals(2, 1+1);
