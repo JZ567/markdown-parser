@@ -1,7 +1,5 @@
 //https://howtodoinjava.com/java/io/java-read-file-to-string-examples/
-
-//testing Github access from ieng
-
+//testing Github access from ieng6
 
 import java.io.IOException;
 import java.nio.file.Files;
