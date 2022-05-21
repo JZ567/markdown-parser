@@ -57,7 +57,7 @@ public class MarkdownParseTest {
         String content = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(content);
 
-        assertEquals(links, List.of("google.com", "google.com", "ucsd.com"));
+        assertEquals(List.of("google.com", "google.com", "ucsd.com"), links);
 
     }
 
@@ -67,7 +67,7 @@ public class MarkdownParseTest {
         String content = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(content);
 
-        assertEquals(links, List.of("a.com", "a.com(())", "example.com"));
+        assertEquals(List.of("a.com", "a.com(())", "example.com"), links);
 
     }
 
@@ -77,9 +77,9 @@ public class MarkdownParseTest {
         String content = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(content);
 
-        assertEquals(links, List.of("https://www.twitter.com", 
+        assertEquals(List.of("https://www.twitter.com", 
         "https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule",
-        "https://cse.ucsd.edu/"));
+        "https://cse.ucsd.edu/"), links);
 
     }
 
