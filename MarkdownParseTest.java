@@ -57,7 +57,7 @@ public class MarkdownParseTest {
         String content = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(content);
 
-        assertEquals(links, List.of("a link on the first line"));
+        assertEquals(links, List.of("google.com", "google.com", "ucsd.com"));
 
     }
 
@@ -67,7 +67,7 @@ public class MarkdownParseTest {
         String content = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(content);
 
-        assertEquals(links, List.of("a link on the first line"));
+        assertEquals(links, List.of("a.com", "a.com(())", "example.com"));
 
     }
 
@@ -77,7 +77,9 @@ public class MarkdownParseTest {
         String content = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(content);
 
-        assertEquals(links, List.of("a link on the first line"));
+        assertEquals(links, List.of("https://www.twitter.com", 
+        "https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule",
+        "https://cse.ucsd.edu/"));
 
     }
 
