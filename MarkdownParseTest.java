@@ -57,7 +57,7 @@ public class MarkdownParseTest {
         String content = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(content);
 
-        assertEquals(List.of("google.com", "google.com", "ucsd.com"), links);
+        assertEquals(List.of("%60google.com", "google.com", "ucsd.com"), links);
 
     }
 
